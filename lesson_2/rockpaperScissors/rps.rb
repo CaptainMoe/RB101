@@ -1,10 +1,12 @@
 
-VALID_CHOICE = ['rock', 'paper', 'scissors']
+VALID_CHOICE = ['rock', 'paper', 'scissors', 'lizard', 'spock']
 
 WINING_CONDTIONS = {
-  'rock' => 'scissors',
-  'paper' => 'rock',
-  'scissors' => 'paper'
+  'rock' => ['scissors', 'lizard'],
+  'paper' => ['rock', 'spock'],
+  'scissors' => ['paper', 'lizard'],
+  'lizard' => ['spock', 'paper'],
+  'spock' => ['scissors', 'rock']
 }
 
 def prompt(message)
@@ -12,9 +14,9 @@ def prompt(message)
 end
 
 def display_resutls(player_choice, computer_choice)
-  if WINING_CONDTIONS[player_choice] == computer_choice
+  if WINING_CONDTIONS[player_choice].include?(computer_choice)
     prompt("You won!")
-  elsif WINING_CONDTIONS[computer_choice] == player_choice
+  elsif WINING_CONDTIONS[computer_choice].include?(player_choice)
     prompt("computer won!")
   else
     prompt("It is a tie")
